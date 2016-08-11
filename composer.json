@@ -13,7 +13,7 @@
     },
     "require-dev": {
         "ezsystems/ezpublish-kernel": "^6.0",
-        "phpunit/phpunit": "^5.5"
+        "phpunit/phpunit": "^4.8|^5.5"
     },
     "autoload": {
         "psr-4": {"Netgen\\Bundle\\SiteAccessRoutesBundle\\": ""}

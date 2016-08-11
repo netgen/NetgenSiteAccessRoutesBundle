@@ -4,7 +4,7 @@ namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\Matcher\Voter;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessVoter;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface;
-use PHPUnit\Framework\TestCase;
+use Netgen\Bundle\SiteAccessRoutesBundle\Tests\TestCase;
 
 class SiteAccessVoterTest extends TestCase
 {
