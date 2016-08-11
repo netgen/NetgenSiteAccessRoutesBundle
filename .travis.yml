@@ -19,11 +19,12 @@ branches:
 
 # composer setup
 before_install:
+    - phpenv config-rm xdebug.ini
     - phpenv config-add travis.php.ini
     - composer self-update
 
 # install dependencies
-install: travis_wait composer install --prefer-source
+install: composer install --prefer-source
 
 # execute phpunit as the script command
 script:
