@@ -8,7 +8,7 @@ Netgen Siteaccess Routes Bundle
 
 Netgen Siteaccess Routes Bundle is an eZ Publish / eZ Platform bundle which allows you to specify in which siteaccesses or siteaccess groups can a route be used.
 
-To specify in which siteaccess a route can be used, you will need to add an `allowed_siteaccess` param to `defaults` section of a route or route import.
+By default, all routes are accessible in all siteaccesses. To specify in which siteaccess a route can be used, you will need to add an `allowed_siteaccess` param to the `defaults` section of a route or route import:
 
 ```yml
 netgen_site_blog:
@@ -28,11 +28,11 @@ _netgen_site:
         allowed_siteaccess: cro
 ```
 
-You can even specify an array or siteaccesses, or use siteaccess groups:
+You can even specify an array of siteaccesses, or use siteaccess groups:
 
 ```yml
 defaults:
-    allowed_siteaccess: [frontend_group, mysiteaccess]
+    allowed_siteaccess: [backend_group, cro]
 ```
 
 As a special case, you can use `_default` keyword to signal that the route is also accessible in the default siteaccess, whichever siteaccess that may be.
@@ -41,6 +41,8 @@ As a special case, you can use `_default` keyword to signal that the route is al
 defaults:
     allowed_siteaccess: [cro, _default]
 ```
+
+If the route is not available in current siteaccess, a 404 Not Found response will be returned.
 
 Installation
 ------------
