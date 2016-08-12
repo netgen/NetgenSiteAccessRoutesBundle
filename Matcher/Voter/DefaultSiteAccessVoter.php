@@ -31,8 +31,11 @@ class DefaultSiteAccessVoter implements VoterInterface
      */
     public function vote($siteAccess, array $routeConfig)
     {
-        // Siteaccess is allowed if it is a default one and default is allowed
-        if ($siteAccess === $this->defaultSiteAccess && in_array(self::DEFAULT_KEY, $routeConfig)) {
+        if ($siteAccess !== $this->defaultSiteAccess) {
+            return VoterInterface::ABSTAIN;
+        }
+
+        if (in_array(static::DEFAULT_KEY, $routeConfig)) {
             return true;
         }
 
