@@ -5,5 +5,4 @@ coverage:
         project:
             default:
                 target: auto
-
 comment: off
