@@ -19,7 +19,6 @@ branches:
 
 # composer setup
 before_install:
-    - phpenv config-rm xdebug.ini
     - phpenv config-add travis.php.ini
     - composer self-update
 
@@ -28,7 +27,7 @@ install: composer install --prefer-source
 
 # execute phpunit as the script command
 script:
-  - ./vendor/bin/phpunit -d memory_limit=-1 --colors -c phpunit.xml
+  - ./vendor/bin/phpunit -d memory_limit=-1 --colors -c phpunit.xml --coverage-clover=coverage.xml
 
 # disable mail notifications
 notifications:
@@ -40,3 +39,7 @@ git:
 
 # we don't need sudo
 sudo: false
+
+# send coverage report to codecov.io
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
