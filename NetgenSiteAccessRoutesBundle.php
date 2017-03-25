@@ -2,9 +2,9 @@
 
 namespace Netgen\Bundle\SiteAccessRoutesBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Netgen\Bundle\SiteAccessRoutesBundle\DependencyInjection\CompilerPass\MatcherPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class NetgenSiteAccessRoutesBundle extends Bundle
 {

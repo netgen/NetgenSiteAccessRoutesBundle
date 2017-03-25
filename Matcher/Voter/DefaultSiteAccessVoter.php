@@ -35,7 +35,7 @@ class DefaultSiteAccessVoter implements VoterInterface
             return VoterInterface::ABSTAIN;
         }
 
-        if (in_array(static::DEFAULT_KEY, $routeConfig)) {
+        if (in_array(static::DEFAULT_KEY, $routeConfig, true)) {
             return true;
         }
 

@@ -34,7 +34,7 @@ class Matcher implements MatcherInterface
         foreach ($this->voters as $voter) {
             $result = $voter->vote($siteAccess, $routeConfig);
             if ($result !== VoterInterface::ABSTAIN) {
-                return (bool)$result;
+                return (bool) $result;
             }
         }
 

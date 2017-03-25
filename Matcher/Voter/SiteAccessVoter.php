@@ -14,7 +14,7 @@ class SiteAccessVoter implements VoterInterface
      */
     public function vote($siteAccess, array $routeConfig)
     {
-        if (in_array($siteAccess, $routeConfig)) {
+        if (in_array($siteAccess, $routeConfig, true)) {
             return true;
         }
 

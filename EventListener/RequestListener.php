@@ -2,13 +2,13 @@
 
 namespace Netgen\Bundle\SiteAccessRoutesBundle\EventListener;
 
+use eZ\Publish\Core\MVC\Symfony\SiteAccess;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
-use eZ\Publish\Core\MVC\Symfony\SiteAccess;
 
 class RequestListener implements EventSubscriberInterface
 {

@@ -5,11 +5,11 @@ namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\EventListener;
 use eZ\Publish\Core\MVC\Symfony\SiteAccess;
 use Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface;
+use Netgen\Bundle\SiteAccessRoutesBundle\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Netgen\Bundle\SiteAccessRoutesBundle\Tests\TestCase;
 
 class RequestListenerTest extends TestCase
 {

@@ -37,7 +37,7 @@ class SiteAccessGroupVoter implements VoterInterface
         // We allow the siteaccess if any group to which the siteaccess belongs
         // is in the list of allowed siteaccesses
         foreach ($this->groupsBySiteAccess[$siteAccess] as $group) {
-            if (in_array($group, $routeConfig)) {
+            if (in_array($group, $routeConfig, true)) {
                 return true;
             }
         }
