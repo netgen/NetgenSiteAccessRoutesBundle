@@ -3,6 +3,7 @@ Netgen Siteaccess Routes Bundle
 
 [![Build Status](https://img.shields.io/travis/netgen/NetgenSiteAccessRoutesBundle.svg?style=flat-square)](https://travis-ci.org/netgen/NetgenSiteAccessRoutesBundle)
 [![Code Coverage](https://img.shields.io/codecov/c/github/netgen/NetgenSiteAccessRoutesBundle.svg?style=flat-square)](https://codecov.io/gh/netgen/NetgenSiteAccessRoutesBundle)
+[![Quality Score](https://img.shields.io/scrutinizer/g/netgen/NetgenSiteAccessRoutesBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/netgen/NetgenSiteAccessRoutesBundle)
 [![Downloads](https://img.shields.io/packagist/dt/netgen/siteaccess-routes-bundle.svg?style=flat-square)](https://packagist.org/packages/netgen/siteaccess-routes-bundle)
 [![Latest stable](https://img.shields.io/packagist/v/netgen/siteaccess-routes-bundle.svg?style=flat-square)](https://packagist.org/packages/netgen/siteaccess-routes-bundle)
 [![License](https://img.shields.io/packagist/l/netgen/siteaccess-routes-bundle.svg?style=flat-square)](https://packagist.org/packages/netgen/siteaccess-routes-bundle)
