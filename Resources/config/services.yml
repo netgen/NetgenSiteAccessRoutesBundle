@@ -1,7 +1,7 @@
 services:
     netgen_siteaccess_routes.event_listener.request:
         class: Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener
-        public: true
+        # public: false
         arguments:
             - "@netgen_siteaccess_routes.matcher"
         tags:
