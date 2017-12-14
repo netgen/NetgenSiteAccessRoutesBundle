@@ -1,39 +1,35 @@
-parameters:
-    netgen_siteaccess_routes.event_listener.request.class: Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener
-
-    netgen_siteaccess_routes.matcher.class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher
-
-    netgen_siteaccess_routes.voter.default_siteaccess.class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\DefaultSiteAccessVoter
-    netgen_siteaccess_routes.voter.siteaccess.class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessVoter
-    netgen_siteaccess_routes.voter.siteaccess_group.class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessGroupVoter
-
 services:
     netgen_siteaccess_routes.event_listener.request:
-        class: "%netgen_siteaccess_routes.event_listener.request.class%"
+        class: Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener
+        public: true
         arguments:
             - "@netgen_siteaccess_routes.matcher"
         tags:
             - { name: kernel.event_subscriber }
 
     netgen_siteaccess_routes.matcher:
-        class: "%netgen_siteaccess_routes.matcher.class%"
+        class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher
+        public: false
         arguments:
             - []
 
     netgen_siteaccess_routes.voter.default_siteaccess:
-        class: "%netgen_siteaccess_routes.voter.default_siteaccess.class%"
+        class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\DefaultSiteAccessVoter
+        public: false
         arguments:
             - "%ezpublish.siteaccess.default%"
         tags:
             - { name: netgen_siteaccess_routes.voter }
 
     netgen_siteaccess_routes.voter.siteaccess:
-        class: "%netgen_siteaccess_routes.voter.siteaccess.class%"
+        class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessVoter
+        public: false
         tags:
             - { name: netgen_siteaccess_routes.voter }
 
     netgen_siteaccess_routes.voter.siteaccess_group:
-        class: "%netgen_siteaccess_routes.voter.siteaccess_group.class%"
+        class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessGroupVoter
+        public: false
         arguments:
             - "%ezpublish.siteaccess.groups_by_siteaccess%"
         tags:
