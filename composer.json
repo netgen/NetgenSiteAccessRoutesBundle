@@ -2,7 +2,7 @@
     "name": "netgen/siteaccess-routes-bundle",
     "description": "Netgen Siteaccess Routes Bundle is an eZ Publish / eZ Platform bundle which allows you to specify in which siteaccesses or siteaccess groups can a route be used",
     "type": "ezplatform-bundle",
-    "license": "GPL-2.0",
+    "license": "GPL-2.0-only",
     "authors": [
         {
             "name": "Netgen",
