@@ -6,7 +6,7 @@ Netgen Siteaccess Routes Bundle
 [![Quality Score](https://img.shields.io/scrutinizer/g/netgen/NetgenSiteAccessRoutesBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/netgen/NetgenSiteAccessRoutesBundle)
 [![Downloads](https://img.shields.io/packagist/dt/netgen/siteaccess-routes-bundle.svg?style=flat-square)](https://packagist.org/packages/netgen/siteaccess-routes-bundle)
 [![Latest stable](https://img.shields.io/packagist/v/netgen/siteaccess-routes-bundle.svg?style=flat-square)](https://packagist.org/packages/netgen/siteaccess-routes-bundle)
-[![License](https://img.shields.io/packagist/l/netgen/siteaccess-routes-bundle.svg?style=flat-square)](https://packagist.org/packages/netgen/siteaccess-routes-bundle)
+[![License](https://img.shields.io/github/license/netgen/NetgenSiteAccessRoutesBundle.svg?style=flat-square)](LICENSE)
 
 Netgen Siteaccess Routes Bundle is an eZ Publish / eZ Platform bundle which allows you to specify in which siteaccesses or siteaccess groups can a route be used.
 
