@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
@@ -17,18 +16,15 @@
 >
     <testsuites>
         <testsuite name="Netgen\Bundle\SiteAccessRoutesBundle">
-            <directory>Tests</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
-
     <filter>
         <whitelist>
-            <directory suffix=".php">.</directory>
+            <directory suffix=".php">bundle</directory>
             <exclude>
-                <directory>vendor</directory>
-                <directory>DependencyInjection</directory>
-                <directory>Resources</directory>
-                <directory>Tests</directory>
+                <directory>bundle/DependencyInjection</directory>
+                <directory>bundle/Resources</directory>
                 <file>NetgenSiteAccessRoutesBundle.php</file>
             </exclude>
         </whitelist>
