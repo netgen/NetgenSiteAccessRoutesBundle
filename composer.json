@@ -1,6 +1,6 @@
 {
     "name": "netgen/siteaccess-routes-bundle",
-    "description": "Netgen Siteaccess Routes Bundle is an eZ Publish / eZ Platform bundle which allows you to specify in which siteaccesses or siteaccess groups can a route be used",
+    "description": "Netgen Siteaccess Routes Bundle is an eZ Platform bundle which allows you to specify in which siteaccesses or siteaccess groups can a route be used",
     "type": "ezplatform-bundle",
     "keywords": [
         "ezpublish",
@@ -14,16 +14,18 @@
     "authors": [
         {
             "name": "Netgen",
-            "homepage": "http://www.netgenlabs.com"
+            "homepage": "https://www.netgenlabs.com"
         }
     ],
     "require": {
         "ezsystems/ezpublish-kernel": "*"
     },
     "require-dev": {
-        "ezsystems/ezpublish-kernel": "^6.0",
-        "phpunit/phpunit": "^5.7|^6.5"
+        "ezsystems/ezpublish-kernel": "^8.0",
+        "phpunit/phpunit": "^8.2"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Netgen\\Bundle\\SiteAccessRoutesBundle\\": "bundle"
