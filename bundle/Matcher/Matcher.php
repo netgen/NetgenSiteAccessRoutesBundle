@@ -14,8 +14,6 @@ class Matcher implements MatcherInterface
     protected $voters;
 
     /**
-     * Constructor.
-     *
      * @param \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface[] $voters
      */
     public function __construct(array $voters)
@@ -25,18 +23,13 @@ class Matcher implements MatcherInterface
 
     /**
      * Returns if provided siteaccess is allowed based on passed route config.
-     *
-     * @param string $siteAccess
-     * @param array $routeConfig
-     *
-     * @return bool
      */
-    public function isAllowed($siteAccess, array $routeConfig)
+    public function isAllowed(string $siteAccess, array $routeConfig): bool
     {
         foreach ($this->voters as $voter) {
             $result = $voter->vote($siteAccess, $routeConfig);
             if ($result !== VoterInterface::ABSTAIN) {
-                return (bool) $result;
+                return $result;
             }
         }
 

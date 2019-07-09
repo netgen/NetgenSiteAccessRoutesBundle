@@ -8,11 +8,6 @@ interface MatcherInterface
 {
     /**
      * Returns if provided siteaccess is allowed based on passed route config.
-     *
-     * @param string $siteAccess
-     * @param array $routeConfig
-     *
-     * @return bool
      */
-    public function isAllowed($siteAccess, array $routeConfig);
+    public function isAllowed(string $siteAccess, array $routeConfig): bool;
 }

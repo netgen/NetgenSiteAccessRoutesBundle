@@ -8,13 +8,8 @@ class SiteAccessVoter implements VoterInterface
 {
     /**
      * Returns if provided siteaccess is allowed based on passed route config.
-     *
-     * @param string $siteAccess
-     * @param array $routeConfig
-     *
-     * @return bool
      */
-    public function vote($siteAccess, array $routeConfig)
+    public function vote(string $siteAccess, array $routeConfig): ?bool
     {
         if (in_array($siteAccess, $routeConfig, true)) {
             return true;

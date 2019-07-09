@@ -6,7 +6,7 @@ namespace Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter;
 
 interface VoterInterface
 {
-    public const ABSTAIN = 'abstain';
+    public const ABSTAIN = null;
 
     /**
      * Returns if provided siteaccess is allowed based on passed route config.
@@ -14,7 +14,7 @@ interface VoterInterface
      * @param string $siteAccess
      * @param array $routeConfig
      *
-     * @return bool
+     * @return bool|null
      */
-    public function vote($siteAccess, array $routeConfig);
+    public function vote(string $siteAccess, array $routeConfig): ?bool;
 }

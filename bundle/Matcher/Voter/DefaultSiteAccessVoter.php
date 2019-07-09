@@ -13,25 +13,15 @@ class DefaultSiteAccessVoter implements VoterInterface
      */
     protected $defaultSiteAccess;
 
-    /**
-     * Constructor.
-     *
-     * @param string $defaultSiteAccess
-     */
-    public function __construct($defaultSiteAccess)
+    public function __construct(string $defaultSiteAccess)
     {
         $this->defaultSiteAccess = $defaultSiteAccess;
     }
 
     /**
      * Returns if provided siteaccess is allowed based on passed route config.
-     *
-     * @param string $siteAccess
-     * @param array $routeConfig
-     *
-     * @return bool
      */
-    public function vote($siteAccess, array $routeConfig)
+    public function vote(string $siteAccess, array $routeConfig): ?bool
     {
         if ($siteAccess !== $this->defaultSiteAccess) {
             return VoterInterface::ABSTAIN;

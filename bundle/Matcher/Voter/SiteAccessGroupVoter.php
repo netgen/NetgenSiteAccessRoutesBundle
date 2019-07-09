@@ -11,11 +11,6 @@ class SiteAccessGroupVoter implements VoterInterface
      */
     protected $groupsBySiteAccess;
 
-    /**
-     * Constructor.
-     *
-     * @param array $groupsBySiteAccess
-     */
     public function __construct(array $groupsBySiteAccess)
     {
         $this->groupsBySiteAccess = $groupsBySiteAccess;
@@ -23,13 +18,8 @@ class SiteAccessGroupVoter implements VoterInterface
 
     /**
      * Returns if provided siteaccess is allowed based on passed route config.
-     *
-     * @param string $siteAccess
-     * @param array $routeConfig
-     *
-     * @return bool
      */
-    public function vote($siteAccess, array $routeConfig)
+    public function vote(string $siteAccess, array $routeConfig): ?bool
     {
         // We skip the check if siteaccess is not part of any group
         if (!isset($this->groupsBySiteAccess[$siteAccess])) {

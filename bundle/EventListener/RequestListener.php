@@ -21,22 +21,12 @@ class RequestListener implements EventSubscriberInterface
      */
     protected $matcher;
 
-    /**
-     * Constructor.
-     *
-     * @param \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface $matcher
-     */
     public function __construct(MatcherInterface $matcher)
     {
         $this->matcher = $matcher;
     }
 
-    /**
-     * Returns an array of event names this subscriber wants to listen to.
-     *
-     * @return array
-     */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             // Needs to execute right after Symfony RouterListener (priority of 32)
@@ -46,10 +36,8 @@ class RequestListener implements EventSubscriberInterface
 
     /**
      * Throws an exception if current route is not allowed in current siteaccess.
-     *
-     * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
      */
-    public function onKernelRequest(RequestEvent $event)
+    public function onKernelRequest(RequestEvent $event): void
     {
         if ($event->getRequestType() !== HttpKernelInterface::MASTER_REQUEST) {
             return;
