@@ -21,7 +21,6 @@
         "ezsystems/ezpublish-kernel": "*"
     },
     "require-dev": {
-        "ezsystems/ezpublish-kernel": "^8.0",
         "phpunit/phpunit": "^8.2"
     },
     "minimum-stability": "dev",
