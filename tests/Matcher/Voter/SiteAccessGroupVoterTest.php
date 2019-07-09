@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\Matcher\Voter;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessGroupVoter;
@@ -13,14 +15,14 @@ class SiteAccessGroupVoterTest extends TestCase
      */
     protected $voter;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->voter = new SiteAccessGroupVoter(
-            array(
-                'eng' => array('frontend'),
-                'cro' => array('frontend'),
-                'admin' => array('backend'),
-            )
+            [
+                'eng' => ['frontend'],
+                'cro' => ['frontend'],
+                'admin' => ['backend'],
+            ]
         );
     }
 
@@ -36,16 +38,16 @@ class SiteAccessGroupVoterTest extends TestCase
      */
     public function testVote($siteAccess, array $groupConfig, $vote)
     {
-        $this->assertEquals($vote, $this->voter->vote($siteAccess, $groupConfig));
+        self::assertSame($vote, $this->voter->vote($siteAccess, $groupConfig));
     }
 
     public function voteProvider()
     {
-        return array(
-            array('cro', array('cro', 'backend'), VoterInterface::ABSTAIN),
-            array('eng', array('cro', 'backend'), VoterInterface::ABSTAIN),
-            array('admin', array('cro', 'backend'), true),
-            array('extra', array('cro', 'backend'), VoterInterface::ABSTAIN),
-        );
+        return [
+            ['cro', ['cro', 'backend'], VoterInterface::ABSTAIN],
+            ['eng', ['cro', 'backend'], VoterInterface::ABSTAIN],
+            ['admin', ['cro', 'backend'], true],
+            ['extra', ['cro', 'backend'], VoterInterface::ABSTAIN],
+        ];
     }
 }

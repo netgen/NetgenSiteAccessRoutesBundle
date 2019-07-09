@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\Matcher\Voter;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessVoter;
@@ -13,7 +15,7 @@ class SiteAccessVoterTest extends TestCase
      */
     protected $voter;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->voter = new SiteAccessVoter();
     }
@@ -29,16 +31,16 @@ class SiteAccessVoterTest extends TestCase
      */
     public function testVote($siteAccess, array $groupConfig, $vote)
     {
-        $this->assertEquals($vote, $this->voter->vote($siteAccess, $groupConfig));
+        self::assertSame($vote, $this->voter->vote($siteAccess, $groupConfig));
     }
 
     public function voteProvider()
     {
-        return array(
-            array('cro', array('cro', 'eng'), true),
-            array('eng', array('cro', 'eng'), true),
-            array('admin', array('cro', 'eng'), VoterInterface::ABSTAIN),
-            array('extra', array('cro', 'eng'), VoterInterface::ABSTAIN),
-        );
+        return [
+            ['cro', ['cro', 'eng'], true],
+            ['eng', ['cro', 'eng'], true],
+            ['admin', ['cro', 'eng'], VoterInterface::ABSTAIN],
+            ['extra', ['cro', 'eng'], VoterInterface::ABSTAIN],
+        ];
     }
 }

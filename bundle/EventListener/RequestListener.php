@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle\EventListener;
 
 use eZ\Publish\Core\MVC\Symfony\SiteAccess;
@@ -12,7 +14,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class RequestListener implements EventSubscriberInterface
 {
-    const ALLOWED_SITEACCESSES_KEY = 'allowed_siteaccess';
+    public const ALLOWED_SITEACCESSES_KEY = 'allowed_siteaccess';
 
     /**
      * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface
@@ -36,10 +38,10 @@ class RequestListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             // Needs to execute right after Symfony RouterListener (priority of 32)
-            KernelEvents::REQUEST => array('onKernelRequest', 31),
-        );
+            KernelEvents::REQUEST => ['onKernelRequest', 31],
+        ];
     }
 
     /**
@@ -65,7 +67,7 @@ class RequestListener implements EventSubscriberInterface
         }
 
         if (!is_array($allowedSiteAccesses)) {
-            $allowedSiteAccesses = array($allowedSiteAccesses);
+            $allowedSiteAccesses = [$allowedSiteAccesses];
         }
 
         if ($this->matcher->isAllowed($currentSiteAccess->name, $allowedSiteAccesses)) {

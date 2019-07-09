@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter;
 
 interface VoterInterface
 {
-    const ABSTAIN = 'abstain';
+    public const ABSTAIN = 'abstain';
 
     /**
      * Returns if provided siteaccess is allowed based on passed route config.

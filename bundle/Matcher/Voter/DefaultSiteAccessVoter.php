@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter;
 
 class DefaultSiteAccessVoter implements VoterInterface
 {
-    const DEFAULT_KEY = '_default';
+    public const DEFAULT_KEY = '_default';
 
     /**
      * @var string

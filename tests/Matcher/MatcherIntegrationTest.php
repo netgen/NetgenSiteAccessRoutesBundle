@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\Matcher;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher;
@@ -13,20 +15,20 @@ class MatcherIntegrationTest extends TestCase
      */
     protected $matcher;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->matcher = new Matcher(
-            array(
+            [
                 new Voter\DefaultSiteAccessVoter('eng'),
                 new Voter\SiteAccessVoter(),
                 new Voter\SiteAccessGroupVoter(
-                    array(
-                        'eng' => array('frontend'),
-                        'cro' => array('frontend'),
-                        'admin' => array('backend'),
-                    )
+                    [
+                        'eng' => ['frontend'],
+                        'cro' => ['frontend'],
+                        'admin' => ['backend'],
+                    ]
                 ),
-            )
+            ]
         );
     }
 
@@ -42,38 +44,38 @@ class MatcherIntegrationTest extends TestCase
      */
     public function testIsAllowed($siteAccess, array $routeConfig, $isAllowed)
     {
-        $this->assertEquals($isAllowed, $this->matcher->isAllowed($siteAccess, $routeConfig));
+        self::assertSame($isAllowed, $this->matcher->isAllowed($siteAccess, $routeConfig));
     }
 
     public function isAllowedProvider()
     {
-        return array(
-            array('eng', array('eng'), true),
-            array('cro', array('eng'), false),
-            array('extra', array('eng'), false),
+        return [
+            ['eng', ['eng'], true],
+            ['cro', ['eng'], false],
+            ['extra', ['eng'], false],
 
-            array('eng', array('cro'), false),
-            array('cro', array('cro'), true),
-            array('extra', array('cro'), false),
+            ['eng', ['cro'], false],
+            ['cro', ['cro'], true],
+            ['extra', ['cro'], false],
 
-            array('eng', array('_default'), true),
-            array('cro', array('_default'), false),
-            array('extra', array('_default'), false),
+            ['eng', ['_default'], true],
+            ['cro', ['_default'], false],
+            ['extra', ['_default'], false],
 
-            array('eng', array('eng', 'backend'), true),
-            array('cro', array('eng', 'backend'), false),
-            array('admin', array('eng', 'backend'), true),
-            array('extra', array('eng', 'backend'), false),
+            ['eng', ['eng', 'backend'], true],
+            ['cro', ['eng', 'backend'], false],
+            ['admin', ['eng', 'backend'], true],
+            ['extra', ['eng', 'backend'], false],
 
-            array('eng', array('_default', 'backend'), true),
-            array('cro', array('_default', 'backend'), false),
-            array('admin', array('_default', 'backend'), true),
-            array('extra', array('_default', 'backend'), false),
+            ['eng', ['_default', 'backend'], true],
+            ['cro', ['_default', 'backend'], false],
+            ['admin', ['_default', 'backend'], true],
+            ['extra', ['_default', 'backend'], false],
 
-            array('eng', array('_default', 'cro'), true),
-            array('cro', array('_default', 'cro'), true),
-            array('admin', array('_default', 'cro'), false),
-            array('extra', array('_default', 'cro'), false),
-        );
+            ['eng', ['_default', 'cro'], true],
+            ['cro', ['_default', 'cro'], true],
+            ['admin', ['_default', 'cro'], false],
+            ['extra', ['_default', 'cro'], false],
+        ];
     }
 }

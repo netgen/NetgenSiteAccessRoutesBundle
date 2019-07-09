@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\EventListener;
 
 use eZ\Publish\Core\MVC\Symfony\SiteAccess;
@@ -14,7 +16,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 class RequestListenerTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit\Framework\MockObject\MockObject
      */
     protected $matcherMock;
 
@@ -23,7 +25,7 @@ class RequestListenerTest extends TestCase
      */
     protected $listener;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->matcherMock = $this->createMock(MatcherInterface::class);
 
@@ -36,8 +38,8 @@ class RequestListenerTest extends TestCase
      */
     public function testGetSubscribedEvents()
     {
-        $this->assertEquals(
-            array(KernelEvents::REQUEST => array('onKernelRequest', 31)),
+        self::assertSame(
+            [KernelEvents::REQUEST => ['onKernelRequest', 31]],
             $this->listener->getSubscribedEvents()
         );
     }
@@ -54,10 +56,10 @@ class RequestListenerTest extends TestCase
         $request->attributes->set('siteaccess', new SiteAccess('eng'));
 
         $this->matcherMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('isAllowed')
-            ->with($this->equalTo('eng'), $this->equalTo(array('cro')))
-            ->will($this->returnValue(true));
+            ->with(self::equalTo('eng'), self::equalTo(['cro']))
+            ->willReturn(true);
 
         $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
@@ -71,14 +73,14 @@ class RequestListenerTest extends TestCase
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
 
-        $request->attributes->set('allowed_siteaccess', array('cro', 'eng'));
+        $request->attributes->set('allowed_siteaccess', ['cro', 'eng']);
         $request->attributes->set('siteaccess', new SiteAccess('eng'));
 
         $this->matcherMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('isAllowed')
-            ->with($this->equalTo('eng'), $this->equalTo(array('cro', 'eng')))
-            ->will($this->returnValue(true));
+            ->with(self::equalTo('eng'), self::equalTo(['cro', 'eng']))
+            ->willReturn(true);
 
         $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
@@ -93,14 +95,14 @@ class RequestListenerTest extends TestCase
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
 
-        $request->attributes->set('allowed_siteaccess', array('cro', 'eng'));
+        $request->attributes->set('allowed_siteaccess', ['cro', 'eng']);
         $request->attributes->set('siteaccess', new SiteAccess('eng'));
 
         $this->matcherMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('isAllowed')
-            ->with($this->equalTo('eng'), $this->equalTo(array('cro', 'eng')))
-            ->will($this->returnValue(false));
+            ->with(self::equalTo('eng'), self::equalTo(['cro', 'eng']))
+            ->willReturn(false);
 
         $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
         $this->listener->onKernelRequest($event);
@@ -114,11 +116,11 @@ class RequestListenerTest extends TestCase
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
 
-        $request->attributes->set('allowed_siteaccess', array('cro', 'eng'));
+        $request->attributes->set('allowed_siteaccess', ['cro', 'eng']);
         $request->attributes->set('siteaccess', new SiteAccess('eng'));
 
         $this->matcherMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('isAllowed');
 
         $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::SUB_REQUEST);
@@ -133,10 +135,10 @@ class RequestListenerTest extends TestCase
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
 
-        $request->attributes->set('allowed_siteaccess', array('cro', 'eng'));
+        $request->attributes->set('allowed_siteaccess', ['cro', 'eng']);
 
         $this->matcherMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('isAllowed');
 
         $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
@@ -154,7 +156,7 @@ class RequestListenerTest extends TestCase
         $request->attributes->set('siteaccess', new SiteAccess('eng'));
 
         $this->matcherMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('isAllowed');
 
         $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
@@ -169,11 +171,11 @@ class RequestListenerTest extends TestCase
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
 
-        $request->attributes->set('allowed_siteaccess', array());
+        $request->attributes->set('allowed_siteaccess', []);
         $request->attributes->set('siteaccess', new SiteAccess('eng'));
 
         $this->matcherMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('isAllowed');
 
         $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);

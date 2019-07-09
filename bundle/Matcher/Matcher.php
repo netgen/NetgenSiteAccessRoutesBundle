@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Matcher;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface;

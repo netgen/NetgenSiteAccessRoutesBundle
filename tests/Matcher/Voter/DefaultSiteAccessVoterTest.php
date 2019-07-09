@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\Matcher\Voter;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\DefaultSiteAccessVoter;
@@ -13,7 +15,7 @@ class DefaultSiteAccessVoterTest extends TestCase
      */
     protected $voter;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->voter = new DefaultSiteAccessVoter('eng');
     }
@@ -30,18 +32,18 @@ class DefaultSiteAccessVoterTest extends TestCase
      */
     public function testVote($siteAccess, array $groupConfig, $vote)
     {
-        $this->assertEquals($vote, $this->voter->vote($siteAccess, $groupConfig));
+        self::assertSame($vote, $this->voter->vote($siteAccess, $groupConfig));
     }
 
     public function voteProvider()
     {
-        return array(
-            array('cro', array('_default'), VoterInterface::ABSTAIN),
-            array('eng', array('_default'), true),
-            array('extra', array('_default'), VoterInterface::ABSTAIN),
-            array('cro', array('cro'), VoterInterface::ABSTAIN),
-            array('eng', array('cro'), VoterInterface::ABSTAIN),
-            array('extra', array('cro'), VoterInterface::ABSTAIN),
-        );
+        return [
+            ['cro', ['_default'], VoterInterface::ABSTAIN],
+            ['eng', ['_default'], true],
+            ['extra', ['_default'], VoterInterface::ABSTAIN],
+            ['cro', ['cro'], VoterInterface::ABSTAIN],
+            ['eng', ['cro'], VoterInterface::ABSTAIN],
+            ['extra', ['cro'], VoterInterface::ABSTAIN],
+        ];
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\DependencyInjection\CompilerPass\MatcherPass;

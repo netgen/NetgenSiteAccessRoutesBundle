@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SiteAccessRoutesBundle\DependencyInjection\CompilerPass;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -22,7 +24,7 @@ class MatcherPass implements CompilerPassInterface
         $matcher = $container->findDefinition('netgen_siteaccess_routes.matcher');
         $voters = $container->findTaggedServiceIds('netgen_siteaccess_routes.voter');
 
-        $voterServices = array();
+        $voterServices = [];
         foreach ($voters as $serviceName => $tag) {
             $voterServices[] = new Reference($serviceName);
         }
