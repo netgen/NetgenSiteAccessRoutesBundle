@@ -9,7 +9,7 @@ use Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
@@ -40,7 +40,7 @@ class RequestListenerTest extends TestCase
     {
         self::assertSame(
             [KernelEvents::REQUEST => ['onKernelRequest', 31]],
-            $this->listener->getSubscribedEvents()
+            $this->listener::getSubscribedEvents()
         );
     }
 
@@ -61,7 +61,7 @@ class RequestListenerTest extends TestCase
             ->with(self::equalTo('eng'), self::equalTo(['cro']))
             ->willReturn(true);
 
-        $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 
@@ -82,7 +82,7 @@ class RequestListenerTest extends TestCase
             ->with(self::equalTo('eng'), self::equalTo(['cro', 'eng']))
             ->willReturn(true);
 
-        $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 
@@ -104,7 +104,7 @@ class RequestListenerTest extends TestCase
             ->with(self::equalTo('eng'), self::equalTo(['cro', 'eng']))
             ->willReturn(false);
 
-        $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
         $this->listener->onKernelRequest($event);
     }
 
@@ -123,7 +123,7 @@ class RequestListenerTest extends TestCase
             ->expects(self::never())
             ->method('isAllowed');
 
-        $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::SUB_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::SUB_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 
@@ -141,7 +141,7 @@ class RequestListenerTest extends TestCase
             ->expects(self::never())
             ->method('isAllowed');
 
-        $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 
@@ -159,7 +159,7 @@ class RequestListenerTest extends TestCase
             ->expects(self::never())
             ->method('isAllowed');
 
-        $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 
@@ -178,7 +178,7 @@ class RequestListenerTest extends TestCase
             ->expects(self::never())
             ->method('isAllowed');
 
-        $event = new GetResponseEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 }

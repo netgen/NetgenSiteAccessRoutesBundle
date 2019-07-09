@@ -7,7 +7,7 @@ namespace Netgen\Bundle\SiteAccessRoutesBundle\EventListener;
 use eZ\Publish\Core\MVC\Symfony\SiteAccess;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -47,9 +47,9 @@ class RequestListener implements EventSubscriberInterface
     /**
      * Throws an exception if current route is not allowed in current siteaccess.
      *
-     * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+     * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
      */
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelRequest(RequestEvent $event)
     {
         if ($event->getRequestType() !== HttpKernelInterface::MASTER_REQUEST) {
             return;
