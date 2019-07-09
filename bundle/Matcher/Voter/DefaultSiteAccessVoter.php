@@ -11,7 +11,7 @@ final class DefaultSiteAccessVoter implements VoterInterface
     /**
      * @var string
      */
-    protected $defaultSiteAccess;
+    private $defaultSiteAccess;
 
     public function __construct(string $defaultSiteAccess)
     {

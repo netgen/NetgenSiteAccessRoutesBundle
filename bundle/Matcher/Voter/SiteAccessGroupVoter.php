@@ -9,7 +9,7 @@ final class SiteAccessGroupVoter implements VoterInterface
     /**
      * @var array
      */
-    protected $groupsBySiteAccess;
+    private $groupsBySiteAccess;
 
     public function __construct(array $groupsBySiteAccess)
     {

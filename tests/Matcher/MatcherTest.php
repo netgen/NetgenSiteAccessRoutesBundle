@@ -13,12 +13,12 @@ final class MatcherTest extends TestCase
     /**
      * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher
      */
-    protected $matcher;
+    private $matcher;
 
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject[]
      */
-    protected $voterMocks;
+    private $voterMocks;
 
     protected function setUp(): void
     {

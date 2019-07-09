@@ -19,12 +19,12 @@ final class RequestListenerTest extends TestCase
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject
      */
-    protected $matcherMock;
+    private $matcherMock;
 
     /**
      * @var \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener
      */
-    protected $listener;
+    private $listener;
 
     protected function setUp(): void
     {

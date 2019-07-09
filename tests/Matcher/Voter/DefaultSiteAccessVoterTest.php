@@ -13,7 +13,7 @@ final class DefaultSiteAccessVoterTest extends TestCase
     /**
      * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\DefaultSiteAccessVoter
      */
-    protected $voter;
+    private $voter;
 
     protected function setUp(): void
     {

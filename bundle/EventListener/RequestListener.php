@@ -19,7 +19,7 @@ final class RequestListener implements EventSubscriberInterface
     /**
      * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface
      */
-    protected $matcher;
+    private $matcher;
 
     public function __construct(MatcherInterface $matcher)
     {

@@ -13,7 +13,7 @@ final class MatcherIntegrationTest extends TestCase
     /**
      * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher
      */
-    protected $matcher;
+    private $matcher;
 
     protected function setUp(): void
     {

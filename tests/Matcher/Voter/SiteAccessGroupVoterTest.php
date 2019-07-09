@@ -13,7 +13,7 @@ final class SiteAccessGroupVoterTest extends TestCase
     /**
      * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessGroupVoter
      */
-    protected $voter;
+    private $voter;
 
     protected function setUp(): void
     {

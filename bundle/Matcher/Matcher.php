@@ -11,7 +11,7 @@ final class Matcher implements MatcherInterface
     /**
      * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface[]
      */
-    protected $voters;
+    private $voters;
 
     /**
      * @param \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface[] $voters
