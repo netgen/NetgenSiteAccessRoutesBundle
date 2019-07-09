@@ -1,7 +1,6 @@
 services:
     netgen_siteaccess_routes.event_listener.request:
         class: Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener
-        # public: false
         arguments:
             - "@netgen_siteaccess_routes.matcher"
         tags:
@@ -9,13 +8,11 @@ services:
 
     netgen_siteaccess_routes.matcher:
         class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher
-        public: false
         arguments:
             - []
 
     netgen_siteaccess_routes.voter.default_siteaccess:
         class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\DefaultSiteAccessVoter
-        public: false
         arguments:
             - "%ezpublish.siteaccess.default%"
         tags:
@@ -23,13 +20,11 @@ services:
 
     netgen_siteaccess_routes.voter.siteaccess:
         class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessVoter
-        public: false
         tags:
             - { name: netgen_siteaccess_routes.voter }
 
     netgen_siteaccess_routes.voter.siteaccess_group:
         class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessGroupVoter
-        public: false
         arguments:
             - "%ezpublish.siteaccess.groups_by_siteaccess%"
         tags:
