@@ -25,7 +25,7 @@ final class SiteAccessVoterTest extends TestCase
      *
      * @dataProvider voteProvider
      */
-    public function testVote(string $siteAccess, array $groupConfig, bool $vote): void
+    public function testVote(string $siteAccess, array $groupConfig, ?bool $vote): void
     {
         self::assertSame($vote, $this->voter->vote($siteAccess, $groupConfig));
     }
