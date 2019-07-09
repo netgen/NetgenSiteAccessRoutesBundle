@@ -8,7 +8,7 @@ use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessVoter;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface;
 use PHPUnit\Framework\TestCase;
 
-class SiteAccessVoterTest extends TestCase
+final class SiteAccessVoterTest extends TestCase
 {
     /**
      * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessVoter

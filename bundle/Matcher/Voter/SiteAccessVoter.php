@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter;
 
-class SiteAccessVoter implements VoterInterface
+final class SiteAccessVoter implements VoterInterface
 {
     /**
      * Returns if provided siteaccess is allowed based on passed route config.

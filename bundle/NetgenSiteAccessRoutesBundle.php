@@ -8,7 +8,7 @@ use Netgen\Bundle\SiteAccessRoutesBundle\DependencyInjection\CompilerPass\Matche
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class NetgenSiteAccessRoutesBundle extends Bundle
+final class NetgenSiteAccessRoutesBundle extends Bundle
 {
     public function build(ContainerBuilder $container): void
     {

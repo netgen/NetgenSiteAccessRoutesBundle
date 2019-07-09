@@ -6,7 +6,7 @@ namespace Netgen\Bundle\SiteAccessRoutesBundle\Matcher;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface;
 
-class Matcher implements MatcherInterface
+final class Matcher implements MatcherInterface
 {
     /**
      * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface[]

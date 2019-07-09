@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter;
 
-class DefaultSiteAccessVoter implements VoterInterface
+final class DefaultSiteAccessVoter implements VoterInterface
 {
     public const DEFAULT_KEY = '_default';
 

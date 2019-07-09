@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-class RequestListener implements EventSubscriberInterface
+final class RequestListener implements EventSubscriberInterface
 {
     public const ALLOWED_SITEACCESSES_KEY = 'allowed_siteaccess';
 
