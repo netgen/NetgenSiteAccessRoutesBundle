@@ -33,21 +33,17 @@ class MatcherIntegrationTest extends TestCase
     }
 
     /**
-     * @param string $siteAccess
-     * @param array $routeConfig
-     * @param bool $isAllowed
-     *
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher::__construct
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher::isAllowed
      *
      * @dataProvider isAllowedProvider
      */
-    public function testIsAllowed($siteAccess, array $routeConfig, $isAllowed)
+    public function testIsAllowed(string $siteAccess, array $routeConfig, bool $isAllowed): void
     {
         self::assertSame($isAllowed, $this->matcher->isAllowed($siteAccess, $routeConfig));
     }
 
-    public function isAllowedProvider()
+    public function isAllowedProvider(): array
     {
         return [
             ['eng', ['eng'], true],

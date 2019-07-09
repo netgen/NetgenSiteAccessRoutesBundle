@@ -32,15 +32,12 @@ class MatcherTest extends TestCase
     }
 
     /**
-     * @param array $voterResults
-     * @param bool $isAllowed
-     *
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher::__construct
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher::isAllowed
      *
      * @dataProvider isAllowedProvider
      */
-    public function testIsAllowed(array $voterResults, $isAllowed)
+    public function testIsAllowed(array $voterResults, bool $isAllowed): void
     {
         foreach ($this->voterMocks as $index => $voter) {
             $voter
@@ -52,7 +49,7 @@ class MatcherTest extends TestCase
         self::assertSame($isAllowed, $this->matcher->isAllowed('cro', []));
     }
 
-    public function isAllowedProvider()
+    public function isAllowedProvider(): array
     {
         return [
             [[true, true, true], true],

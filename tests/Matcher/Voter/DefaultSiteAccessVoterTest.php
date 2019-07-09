@@ -21,21 +21,17 @@ class DefaultSiteAccessVoterTest extends TestCase
     }
 
     /**
-     * @param string $siteAccess
-     * @param array $groupConfig
-     * @param bool $vote
-     *
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\DefaultSiteAccessVoter::__construct
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\DefaultSiteAccessVoter::vote
      *
      * @dataProvider voteProvider
      */
-    public function testVote($siteAccess, array $groupConfig, $vote)
+    public function testVote(string $siteAccess, array $groupConfig, bool $vote): void
     {
         self::assertSame($vote, $this->voter->vote($siteAccess, $groupConfig));
     }
 
-    public function voteProvider()
+    public function voteProvider(): array
     {
         return [
             ['cro', ['_default'], VoterInterface::ABSTAIN],

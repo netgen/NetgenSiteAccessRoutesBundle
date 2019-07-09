@@ -21,20 +21,16 @@ class SiteAccessVoterTest extends TestCase
     }
 
     /**
-     * @param string $siteAccess
-     * @param array $groupConfig
-     * @param bool $vote
-     *
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessVoter::vote
      *
      * @dataProvider voteProvider
      */
-    public function testVote($siteAccess, array $groupConfig, $vote)
+    public function testVote(string $siteAccess, array $groupConfig, bool $vote): void
     {
         self::assertSame($vote, $this->voter->vote($siteAccess, $groupConfig));
     }
 
-    public function voteProvider()
+    public function voteProvider(): array
     {
         return [
             ['cro', ['cro', 'eng'], true],

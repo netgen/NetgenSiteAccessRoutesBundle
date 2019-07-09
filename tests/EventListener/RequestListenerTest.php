@@ -10,6 +10,7 @@ use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
@@ -36,7 +37,7 @@ class RequestListenerTest extends TestCase
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::__construct
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::getSubscribedEvents
      */
-    public function testGetSubscribedEvents()
+    public function testGetSubscribedEvents(): void
     {
         self::assertSame(
             [KernelEvents::REQUEST => ['onKernelRequest', 31]],
@@ -47,7 +48,7 @@ class RequestListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
      */
-    public function testOnKernelRequest()
+    public function testOnKernelRequest(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
@@ -68,7 +69,7 @@ class RequestListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
      */
-    public function testOnKernelRequestWithConfigArray()
+    public function testOnKernelRequestWithConfigArray(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
@@ -88,10 +89,11 @@ class RequestListenerTest extends TestCase
 
     /**
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
-     * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function testOnKernelRequestThrowsNotFoundHttpException()
+    public function testOnKernelRequestThrowsNotFoundHttpException(): void
     {
+        $this->expectException(NotFoundHttpException::class);
+
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
 
@@ -111,7 +113,7 @@ class RequestListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
      */
-    public function testOnKernelRequestInSubRequest()
+    public function testOnKernelRequestInSubRequest(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
@@ -130,7 +132,7 @@ class RequestListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
      */
-    public function testOnKernelRequestWithNoSiteAccess()
+    public function testOnKernelRequestWithNoSiteAccess(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
@@ -148,7 +150,7 @@ class RequestListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
      */
-    public function testOnKernelRequestWithNoConfig()
+    public function testOnKernelRequestWithNoConfig(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
@@ -166,7 +168,7 @@ class RequestListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
      */
-    public function testOnKernelRequestWithEmptyConfig()
+    public function testOnKernelRequestWithEmptyConfig(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
         $request = Request::create('/');
