@@ -25,7 +25,7 @@ or
 
 ```yml
 _netgen_site:
-    resource: "@NetgenSiteBundle/Resources/config/routing.yml"
+    resource: "@NetgenSiteBundle/Resources/config/routing.yaml"
     defaults:
         allowed_siteaccess: cro
 ```
