@@ -15,9 +15,9 @@ By default, all routes are accessible in all siteaccesses. To specify in which s
 ```yml
 netgen_site_blog:
     path: /blog
+    controller: "netgen_site.controller.blog:blogAction"
     methods: [GET]
     defaults:
-        _controller: "netgen_site.controller.blog:blogAction"
         allowed_siteaccess: cro
 ```
 
