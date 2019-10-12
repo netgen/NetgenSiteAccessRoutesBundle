@@ -8,7 +8,7 @@ Netgen Siteaccess Routes Bundle
 [![Latest stable](https://img.shields.io/packagist/v/netgen/siteaccess-routes-bundle.svg?style=flat-square)](https://packagist.org/packages/netgen/siteaccess-routes-bundle)
 [![License](https://img.shields.io/github/license/netgen/NetgenSiteAccessRoutesBundle.svg?style=flat-square)](LICENSE)
 
-Netgen Siteaccess Routes Bundle is an eZ Publish / eZ Platform bundle which allows you to specify in which siteaccesses or siteaccess groups can a route be used.
+Netgen Siteaccess Routes Bundle is an eZ Platform bundle which allows you to specify in which siteaccesses or siteaccess groups can a route be used.
 
 By default, all routes are accessible in all siteaccesses. To specify in which siteaccess a route can be used, you will need to add an `allowed_siteaccess` param to the `defaults` section of a route or route import:
 
@@ -52,7 +52,7 @@ Installation
 Use Composer:
 
 ```bash
-composer require netgen/siteaccess-routes-bundle:^1.0
+composer require netgen/siteaccess-routes-bundle
 ```
 
 Activate in kernel:

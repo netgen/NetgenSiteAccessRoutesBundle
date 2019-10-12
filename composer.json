@@ -3,7 +3,6 @@
     "description": "Netgen Siteaccess Routes Bundle is an eZ Platform bundle which allows you to specify in which siteaccesses or siteaccess groups can a route be used",
     "type": "ezplatform-bundle",
     "keywords": [
-        "ezpublish",
         "ezplatform",
         "netgen",
         "siteaccess-routes-bundle",
