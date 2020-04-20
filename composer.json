@@ -17,10 +17,10 @@
         }
     ],
     "require": {
-        "ezsystems/ezpublish-kernel": "^8.0"
+        "ezsystems/ezplatform-kernel": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.3"
+        "phpunit/phpunit": "^9.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
