@@ -55,10 +55,10 @@ Use Composer:
 composer require netgen/siteaccess-routes-bundle
 ```
 
-Activate in kernel:
+Activate in `config/bundles.php`:
 
 ```php
-$bundles[] = new Netgen\Bundle\SiteAccessRoutesBundle\NetgenSiteAccessRoutesBundle();
+Netgen\Bundle\SiteAccessRoutesBundle\NetgenSiteAccessRoutesBundle::class => ['all' => true],
 ```
 
 That's it. Configure the routes and go about your day.
