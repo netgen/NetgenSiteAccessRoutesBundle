@@ -1,9 +1,9 @@
 {
     "name": "netgen/siteaccess-routes-bundle",
-    "description": "Netgen Siteaccess Routes Bundle is an eZ Platform bundle which allows you to specify in which siteaccesses or siteaccess groups can a route be used",
-    "type": "ezplatform-bundle",
+    "description": "Netgen Siteaccess Routes Bundle is an Ibexa Platform bundle which allows you to specify in which siteaccesses or siteaccess groups can a route be used",
+    "type": "ibexa-bundle",
     "keywords": [
-        "ezplatform",
+        "ibexa",
         "netgen",
         "siteaccess-routes-bundle",
         "siteaccess"
@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "ezsystems/ezplatform-kernel": "^1.0"
+        "ibexa/core": "^4.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0"
@@ -39,7 +39,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.x-dev"
+            "dev-master": "3.x-dev"
         }
     }
 }

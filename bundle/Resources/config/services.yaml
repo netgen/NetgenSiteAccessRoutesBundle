@@ -14,7 +14,7 @@ services:
     netgen_siteaccess_routes.voter.default_siteaccess:
         class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\DefaultSiteAccessVoter
         arguments:
-            - "%ezpublish.siteaccess.default%"
+            - "%ibexa.site_access.default%"
         tags:
             - { name: netgen_siteaccess_routes.voter }
 
@@ -26,6 +26,6 @@ services:
     netgen_siteaccess_routes.voter.siteaccess_group:
         class: Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessGroupVoter
         arguments:
-            - "%ezpublish.siteaccess.groups_by_siteaccess%"
+            - "%ibexa.site_access.groups_by_site_access%"
         tags:
             - { name: netgen_siteaccess_routes.voter }
