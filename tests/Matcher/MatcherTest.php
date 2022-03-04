@@ -10,15 +10,12 @@ use PHPUnit\Framework\TestCase;
 
 final class MatcherTest extends TestCase
 {
-    /**
-     * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher
-     */
-    private $matcher;
+    private Matcher $matcher;
 
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject[]
      */
-    private $voterMocks;
+    private array $voterMocks;
 
     protected function setUp(): void
     {

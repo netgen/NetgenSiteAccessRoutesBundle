@@ -17,10 +17,7 @@ final class RequestListener implements EventSubscriberInterface
 {
     public const ALLOWED_SITEACCESSES_KEY = 'allowed_siteaccess';
 
-    /**
-     * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface
-     */
-    private $matcher;
+    private MatcherInterface $matcher;
 
     public function __construct(MatcherInterface $matcher)
     {

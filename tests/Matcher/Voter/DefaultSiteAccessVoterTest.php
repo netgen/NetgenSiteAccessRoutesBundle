@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class DefaultSiteAccessVoterTest extends TestCase
 {
-    /**
-     * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\DefaultSiteAccessVoter
-     */
-    private $voter;
+    private DefaultSiteAccessVoter $voter;
 
     protected function setUp(): void
     {

@@ -7,6 +7,7 @@ namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\EventListener;
 use Ibexa\Core\MVC\Symfony\SiteAccess;
 use Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -16,15 +17,9 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 final class RequestListenerTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    private $matcherMock;
+    private MockObject $matcherMock;
 
-    /**
-     * @var \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener
-     */
-    private $listener;
+    private RequestListener $listener;
 
     protected function setUp(): void
     {

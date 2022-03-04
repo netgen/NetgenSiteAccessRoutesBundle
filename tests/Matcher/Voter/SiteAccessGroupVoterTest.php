@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SiteAccessGroupVoterTest extends TestCase
 {
-    /**
-     * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessGroupVoter
-     */
-    private $voter;
+    private SiteAccessGroupVoter $voter;
 
     protected function setUp(): void
     {

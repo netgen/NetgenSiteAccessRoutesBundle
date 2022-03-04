@@ -8,10 +8,7 @@ use function in_array;
 
 final class SiteAccessGroupVoter implements VoterInterface
 {
-    /**
-     * @var array
-     */
-    private $groupsBySiteAccess;
+    private array $groupsBySiteAccess;
 
     public function __construct(array $groupsBySiteAccess)
     {

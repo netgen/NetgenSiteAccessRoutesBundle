@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class MatcherIntegrationTest extends TestCase
 {
-    /**
-     * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher
-     */
-    private $matcher;
+    private Matcher $matcher;
 
     protected function setUp(): void
     {
