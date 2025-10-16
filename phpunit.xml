@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
-    backupGlobals="false"
-    bootstrap="vendor/autoload.php"
-    colors="true"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
-    forceCoversAnnotation="true"
-    beStrictAboutTestsThatDoNotTestAnything="true"
-    beStrictAboutOutputDuringTests="true"
-    beStrictAboutChangesToGlobalState="true"
->
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/12.4/phpunit.xsd"
+        backupGlobals="false"
+        bootstrap="vendor/autoload.php"
+        colors="true"
+        beStrictAboutTestsThatDoNotTestAnything="true"
+        beStrictAboutOutputDuringTests="true"
+        beStrictAboutChangesToGlobalState="true"
+        cacheDirectory=".phpunit.cache"
+        requireCoverageMetadata="true">
     <testsuites>
         <testsuite name="Netgen\Bundle\SiteAccessRoutesBundle">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
+    <source>
+        <include>
             <directory suffix=".php">bundle</directory>
-            <exclude>
-                <directory>bundle/DependencyInjection</directory>
-                <directory>bundle/Resources</directory>
-                <file>NetgenSiteAccessRoutesBundle.php</file>
-            </exclude>
-        </whitelist>
-    </filter>
+        </include>
+        <exclude>
+            <directory>bundle/DependencyInjection</directory>
+            <directory>bundle/Resources</directory>
+            <file>NetgenSiteAccessRoutesBundle.php</file>
+        </exclude>
+    </source>
 </phpunit>
