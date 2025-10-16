@@ -6,8 +6,11 @@ namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\Matcher\Voter;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessGroupVoter;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(SiteAccessGroupVoter::class)]
 final class SiteAccessGroupVoterTest extends TestCase
 {
     private SiteAccessGroupVoter $voter;
@@ -23,18 +26,13 @@ final class SiteAccessGroupVoterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessGroupVoter::__construct
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\SiteAccessGroupVoter::vote
-     *
-     * @dataProvider voteProvider
-     */
+    #[DataProvider('provideVoteCases')]
     public function testVote(string $siteAccess, array $groupConfig, ?bool $vote): void
     {
         self::assertSame($vote, $this->voter->vote($siteAccess, $groupConfig));
     }
 
-    public function voteProvider(): array
+    public static function provideVoteCases(): iterable
     {
         return [
             ['cro', ['cro', 'backend'], VoterInterface::ABSTAIN],

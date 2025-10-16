@@ -7,6 +7,7 @@ namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\EventListener;
 use Ibexa\Core\MVC\Symfony\SiteAccess;
 use Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +16,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
+#[CoversClass(RequestListener::class)]
 final class RequestListenerTest extends TestCase
 {
     private MockObject $matcherMock;
@@ -28,10 +30,6 @@ final class RequestListenerTest extends TestCase
         $this->listener = new RequestListener($this->matcherMock);
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::__construct
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::getSubscribedEvents
-     */
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
@@ -40,9 +38,6 @@ final class RequestListenerTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
-     */
     public function testOnKernelRequest(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
@@ -57,13 +52,10 @@ final class RequestListenerTest extends TestCase
             ->with(self::equalTo('eng'), self::equalTo(['cro']))
             ->willReturn(true);
 
-        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MAIN_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
-     */
     public function testOnKernelRequestWithConfigArray(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
@@ -78,13 +70,10 @@ final class RequestListenerTest extends TestCase
             ->with(self::equalTo('eng'), self::equalTo(['cro', 'eng']))
             ->willReturn(true);
 
-        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MAIN_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
-     */
     public function testOnKernelRequestThrowsNotFoundHttpException(): void
     {
         $this->expectException(NotFoundHttpException::class);
@@ -101,13 +90,10 @@ final class RequestListenerTest extends TestCase
             ->with(self::equalTo('eng'), self::equalTo(['cro', 'eng']))
             ->willReturn(false);
 
-        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MAIN_REQUEST);
         $this->listener->onKernelRequest($event);
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
-     */
     public function testOnKernelRequestInSubRequest(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
@@ -124,9 +110,6 @@ final class RequestListenerTest extends TestCase
         self::assertNull($this->listener->onKernelRequest($event));
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
-     */
     public function testOnKernelRequestWithNoSiteAccess(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
@@ -138,13 +121,10 @@ final class RequestListenerTest extends TestCase
             ->expects(self::never())
             ->method('isAllowed');
 
-        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MAIN_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
-     */
     public function testOnKernelRequestWithNoConfig(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
@@ -156,13 +136,10 @@ final class RequestListenerTest extends TestCase
             ->expects(self::never())
             ->method('isAllowed');
 
-        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MAIN_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\EventListener\RequestListener::onKernelRequest
-     */
     public function testOnKernelRequestWithEmptyConfig(): void
     {
         $kernelMock = $this->createMock(HttpKernelInterface::class);
@@ -175,7 +152,7 @@ final class RequestListenerTest extends TestCase
             ->expects(self::never())
             ->method('isAllowed');
 
-        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new RequestEvent($kernelMock, $request, HttpKernelInterface::MAIN_REQUEST);
         self::assertNull($this->listener->onKernelRequest($event));
     }
 }
