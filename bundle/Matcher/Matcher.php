@@ -9,17 +9,11 @@ use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface;
 final class Matcher implements MatcherInterface
 {
     /**
-     * @var \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface[]
+     * @param VoterInterface[] $voters
      */
-    private array $voters;
-
-    /**
-     * @param \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface[] $voters
-     */
-    public function __construct(array $voters)
-    {
-        $this->voters = $voters;
-    }
+    public function __construct(
+        private readonly array $voters,
+    ) {}
 
     /**
      * Returns if provided siteaccess is allowed based on passed route config.

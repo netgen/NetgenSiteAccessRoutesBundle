@@ -10,18 +10,16 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
+
 use function is_array;
 
 final class RequestListener implements EventSubscriberInterface
 {
-    public const ALLOWED_SITEACCESSES_KEY = 'allowed_siteaccess';
+    public const string ALLOWED_SITEACCESSES_KEY = 'allowed_siteaccess';
 
-    private MatcherInterface $matcher;
-
-    public function __construct(MatcherInterface $matcher)
-    {
-        $this->matcher = $matcher;
-    }
+    public function __construct(
+        private readonly MatcherInterface $matcher,
+    ) {}
 
     public static function getSubscribedEvents(): array
     {
