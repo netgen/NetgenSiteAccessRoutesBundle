@@ -11,7 +11,7 @@ final class DefaultSiteAccessVoter implements VoterInterface
     public const string DEFAULT_KEY = '_default';
 
     public function __construct(
-        private readonly string $defaultSiteAccess,
+        private string $defaultSiteAccess,
     ) {}
 
     /**

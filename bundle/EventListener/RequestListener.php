@@ -18,7 +18,7 @@ final class RequestListener implements EventSubscriberInterface
     public const string ALLOWED_SITEACCESSES_KEY = 'allowed_siteaccess';
 
     public function __construct(
-        private readonly MatcherInterface $matcher,
+        private MatcherInterface $matcher,
     ) {}
 
     public static function getSubscribedEvents(): array

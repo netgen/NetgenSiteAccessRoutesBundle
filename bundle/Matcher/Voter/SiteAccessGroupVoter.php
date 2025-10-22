@@ -9,7 +9,7 @@ use function in_array;
 final class SiteAccessGroupVoter implements VoterInterface
 {
     public function __construct(
-        private readonly array $groupsBySiteAccess,
+        private array $groupsBySiteAccess,
     ) {}
 
     /**

@@ -12,7 +12,7 @@ final class Matcher implements MatcherInterface
      * @param \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface[] $voters
      */
     public function __construct(
-        private readonly array $voters,
+        private array $voters,
     ) {}
 
     /**
