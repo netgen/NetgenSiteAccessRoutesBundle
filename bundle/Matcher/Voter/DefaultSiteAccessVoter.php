@@ -8,14 +8,11 @@ use function in_array;
 
 final class DefaultSiteAccessVoter implements VoterInterface
 {
-    public const DEFAULT_KEY = '_default';
+    public const string DEFAULT_KEY = '_default';
 
-    private string $defaultSiteAccess;
-
-    public function __construct(string $defaultSiteAccess)
-    {
-        $this->defaultSiteAccess = $defaultSiteAccess;
-    }
+    public function __construct(
+        private readonly string $defaultSiteAccess,
+    ) {}
 
     /**
      * Returns if provided siteaccess is allowed based on passed route config.
@@ -26,7 +23,7 @@ final class DefaultSiteAccessVoter implements VoterInterface
             return VoterInterface::ABSTAIN;
         }
 
-        if (in_array(static::DEFAULT_KEY, $routeConfig, true)) {
+        if (in_array(self::DEFAULT_KEY, $routeConfig, true)) {
             return true;
         }
 

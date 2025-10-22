@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\Matcher;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher;
+use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\MatcherInterface;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter;
+use PHPUnit\Framework\Attributes\CoversClassesThatImplementInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClassesThatImplementInterface(MatcherInterface::class)]
 final class MatcherIntegrationTest extends TestCase
 {
     private Matcher $matcher;
@@ -29,18 +33,13 @@ final class MatcherIntegrationTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher::__construct
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher::isAllowed
-     *
-     * @dataProvider isAllowedProvider
-     */
+    #[DataProvider('provideIsAllowedCases')]
     public function testIsAllowed(string $siteAccess, array $routeConfig, bool $isAllowed): void
     {
         self::assertSame($isAllowed, $this->matcher->isAllowed($siteAccess, $routeConfig));
     }
 
-    public function isAllowedProvider(): array
+    public static function provideIsAllowedCases(): iterable
     {
         return [
             ['eng', ['eng'], true],

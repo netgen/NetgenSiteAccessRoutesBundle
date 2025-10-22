@@ -21,6 +21,7 @@ return (new PhpCsFixer\Config())
         'single_line_comment_style' => false,
         'visibility_required' => ['elements' => ['property', 'method', 'const']],
         'yoda_style' => false,
+        'fully_qualified_strict_types' => false,
 
         // Additional rules
         'date_time_immutable' => true,

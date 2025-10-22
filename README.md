@@ -20,6 +20,11 @@ netgen_site_blog:
         allowed_siteaccess: cro
 ```
 
+```php
+// if using PHP attributes
+#[Route(path: '/home', defaults: ['allowed_siteaccess' => 'cro'], methods: ['GET'])]
+```
+
 or
 
 ```yml
@@ -41,6 +46,11 @@ As a special case, you can use `_default` keyword to signal that the route is al
 ```yml
 defaults:
     allowed_siteaccess: [cro, _default]
+```
+
+```php
+// if using PHP attributes
+#[Route(path: '/home', defaults: ['allowed_siteaccess' => ['cro', '_default']], methods: ['GET'])]
 ```
 
 If the route is not available in current siteaccess, a 404 Not Found response will be returned.

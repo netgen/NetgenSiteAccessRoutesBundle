@@ -6,8 +6,11 @@ namespace Netgen\Bundle\SiteAccessRoutesBundle\Tests\Matcher;
 
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher;
 use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Matcher::class)]
 final class MatcherTest extends TestCase
 {
     private Matcher $matcher;
@@ -28,17 +31,11 @@ final class MatcherTest extends TestCase
         $this->matcher = new Matcher($this->voterMocks);
     }
 
-    /**
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher::__construct
-     * @covers \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Matcher::isAllowed
-     *
-     * @dataProvider isAllowedProvider
-     */
+    #[DataProvider('provideIsAllowedCases')]
     public function testIsAllowed(array $voterResults, bool $isAllowed): void
     {
         foreach ($this->voterMocks as $index => $voter) {
             $voter
-                ->expects(self::any())
                 ->method('vote')
                 ->willReturn($voterResults[$index]);
         }
@@ -46,7 +43,7 @@ final class MatcherTest extends TestCase
         self::assertSame($isAllowed, $this->matcher->isAllowed('cro', []));
     }
 
-    public function isAllowedProvider(): array
+    public static function provideIsAllowedCases(): iterable
     {
         return [
             [[true, true, true], true],

@@ -8,12 +8,9 @@ use function in_array;
 
 final class SiteAccessGroupVoter implements VoterInterface
 {
-    private array $groupsBySiteAccess;
-
-    public function __construct(array $groupsBySiteAccess)
-    {
-        $this->groupsBySiteAccess = $groupsBySiteAccess;
-    }
+    public function __construct(
+        private readonly array $groupsBySiteAccess,
+    ) {}
 
     /**
      * Returns if provided siteaccess is allowed based on passed route config.
