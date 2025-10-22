@@ -9,7 +9,7 @@ use Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface;
 final class Matcher implements MatcherInterface
 {
     /**
-     * @param VoterInterface[] $voters
+     * @param \Netgen\Bundle\SiteAccessRoutesBundle\Matcher\Voter\VoterInterface[] $voters
      */
     public function __construct(
         private readonly array $voters,

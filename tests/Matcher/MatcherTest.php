@@ -17,7 +17,7 @@ final class MatcherTest extends TestCase
     private Matcher $matcher;
 
     /**
-     * @var MockObject[]
+     * @var \PHPUnit\Framework\MockObject\MockObject[]
      */
     private array $voterMocks;
 
